@@ -11,8 +11,9 @@
 @class DetailViewController;
 
 #import <CoreData/CoreData.h>
+#import "EditItemTableViewController.h"
 
-@interface MasterViewController : UITableViewController <NSFetchedResultsControllerDelegate>
+@interface MasterViewController : UITableViewController <NSFetchedResultsControllerDelegate, EditItemTableViewControllerDelegate>
 
 @property (strong, nonatomic) DetailViewController *detailViewController;
 

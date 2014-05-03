@@ -26,6 +26,7 @@
 		1E27B6D6191584BE000E01DE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E27B6AE191584BD000E01DE /* CoreData.framework */; };
 		1E27B6DE191584BE000E01DE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1E27B6DC191584BE000E01DE /* InfoPlist.strings */; };
 		1E27B6E0191584BE000E01DE /* MemoryAidTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E27B6DF191584BE000E01DE /* MemoryAidTests.m */; };
+		1E27B6EB19158F15000E01DE /* EditItemTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E27B6EA19158F15000E01DE /* EditItemTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,8 @@
 		1E27B6DB191584BE000E01DE /* MemoryAidTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MemoryAidTests-Info.plist"; sourceTree = "<group>"; };
 		1E27B6DD191584BE000E01DE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1E27B6DF191584BE000E01DE /* MemoryAidTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MemoryAidTests.m; sourceTree = "<group>"; };
+		1E27B6E919158F15000E01DE /* EditItemTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditItemTableViewController.h; sourceTree = "<group>"; };
+		1E27B6EA19158F15000E01DE /* EditItemTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditItemTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +136,8 @@
 				1E27B6C6191584BE000E01DE /* MasterViewController.m */,
 				1E27B6C8191584BE000E01DE /* DetailViewController.h */,
 				1E27B6C9191584BE000E01DE /* DetailViewController.m */,
+				1E27B6E919158F15000E01DE /* EditItemTableViewController.h */,
+				1E27B6EA19158F15000E01DE /* EditItemTableViewController.m */,
 				1E27B6CB191584BE000E01DE /* Images.xcassets */,
 				1E27B6C2191584BE000E01DE /* MemoryAid.xcdatamodeld */,
 				1E27B6B1191584BD000E01DE /* Supporting Files */,
@@ -269,6 +274,7 @@
 			files = (
 				1E27B6CA191584BE000E01DE /* DetailViewController.m in Sources */,
 				1E27B6C7191584BE000E01DE /* MasterViewController.m in Sources */,
+				1E27B6EB19158F15000E01DE /* EditItemTableViewController.m in Sources */,
 				1E27B6BB191584BD000E01DE /* AppDelegate.m in Sources */,
 				1E27B6C4191584BE000E01DE /* MemoryAid.xcdatamodeld in Sources */,
 				1E27B6B7191584BD000E01DE /* main.m in Sources */,

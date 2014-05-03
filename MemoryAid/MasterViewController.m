@@ -9,6 +9,8 @@
 #import "MasterViewController.h"
 
 #import "DetailViewController.h"
+#import "EditItemTableViewController.h"
+#define EditItemSegue @"editItemSegue"
 
 @interface MasterViewController ()
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
@@ -31,7 +33,7 @@
 	// Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(popupEditDialog:)];
     self.navigationItem.rightBarButtonItem = addButton;
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
 }
@@ -41,6 +43,16 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void) popupEditDialog:(id)sender
+{
+    //EditItemTableViewController *editItemTableViewController = [[EditItemTableViewController init] alloc];
+    //[self presentViewController:editItemTableViewController animated:YES completion: nil];
+    
+    [self performSegueWithIdentifier:EditItemSegue sender:self];
+    
+}
+
 
 - (void)insertNewObject:(id)sender
 {
@@ -128,7 +140,13 @@
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
         [[segue destinationViewController] setDetailItem:object];
+    } else if([[segue identifier] isEqualToString:EditItemSegue])
+    {
+        EditItemTableViewController *editItemTableViewController = [segue destinationViewController];
+        
     }
+
+    
 }
 
 #pragma mark - Fetched results controller
