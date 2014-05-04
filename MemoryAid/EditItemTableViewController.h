@@ -7,19 +7,28 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ItemDto.h"
 
 @protocol EditItemTableViewControllerDelegate;
 
 
-@interface EditItemTableViewController : UITableViewController
+@interface EditItemTableViewController : UITableViewController <UITextViewDelegate, UITextFieldDelegate>
+@property (strong, nonatomic) IBOutlet UITextField *textFieldName;
+@property (strong, nonatomic) IBOutlet UITextView *textViewDesc;
 
 @property (strong, nonatomic) id<EditItemTableViewControllerDelegate> delegate;
+@property (strong, nonatomic) ItemDto *itemDto;
+- (IBAction)addItem:(id)sender;
 @end
 
 @protocol EditItemTableViewControllerDelegate <NSObject>
 
-- (void) addItem;
+- (void) addItem:(ItemDto*)itemDto;
+
+@optional
 - (void) deleteItem;
+
+@optional
 - (void) updateItem;
 
 @end

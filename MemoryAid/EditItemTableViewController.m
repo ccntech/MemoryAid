@@ -17,6 +17,9 @@
 @implementation EditItemTableViewController
 
 @synthesize delegate = _delegate;
+@synthesize itemDto = _itemDto;
+@synthesize textFieldName = _textFieldName;
+@synthesize textViewDesc = _textViewDesc;
 
 /*
 - (id)initWithStyle:(UITableViewStyle)style
@@ -49,11 +52,23 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    _textFieldName.text = _itemDto.uuid;
+    _textFieldName.delegate = self;
+    _textViewDesc.delegate = self;
+    
+    
+
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 
 #pragma mark - Table view data source
 
@@ -117,5 +132,34 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (IBAction)addItem:(id)sender {
+    
+    ItemDto *itemDto = [[ItemDto alloc] init];
+    itemDto.name = _textFieldName.text;
+    itemDto.desc = _textViewDesc.text;
+    [_delegate addItem:itemDto];
+    [[self navigationController] popViewControllerAnimated:YES];
+    
+}
+
+#pragma  UiTextViewDelegate
+- (BOOL) textView: (UITextView*) textView
+shouldChangeTextInRange: (NSRange) range
+  replacementText: (NSString*) text
+{
+    if ([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
+    }
+    return YES;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
 
 @end

@@ -10,6 +10,9 @@
 
 #import "DetailViewController.h"
 #import "EditItemTableViewController.h"
+#import "Item+Category.h"
+#import "ItemDto.h"
+
 #define EditItemSegue @"editItemSegue"
 
 @interface MasterViewController ()
@@ -57,15 +60,13 @@
 - (void)insertNewObject:(id)sender
 {
     NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
-    NSEntityDescription *entity = [[self.fetchedResultsController fetchRequest] entity];
-    NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:context];
-    
+
     NSString *uuidString = [[NSUUID UUID] UUIDString];
+
+    Item *item = [NSEntityDescription insertNewObjectForEntityForName:@"Item" inManagedObjectContext:context];
+    item.timeStamp = [NSDate date];
+    item.uuid = uuidString;
     
-    // If appropriate, configure the new managed object.
-    // Normally you should use accessor methods, but using KVC here avoids the need to add a custom class to the template.
-    [newManagedObject setValue:[NSDate date] forKey:@"timeStamp"];
-    [newManagedObject setValue:uuidString forKey:@"id"];
     
     
     // Save the context.
@@ -136,14 +137,21 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+  
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    Item *item = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+    
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-        [[segue destinationViewController] setDetailItem:object];
+  
+        
+        [[segue destinationViewController] setDetailItem:item];
     } else if([[segue identifier] isEqualToString:EditItemSegue])
     {
         EditItemTableViewController *editItemTableViewController = [segue destinationViewController];
-        
+        [editItemTableViewController setDelegate:self];
+        ItemDto *itemDto = [[ItemDto alloc] init];
+        itemDto.uuid=@"12344";
+        [editItemTableViewController setItemDto:itemDto];
     }
 
     
@@ -157,10 +165,13 @@
         return _fetchedResultsController;
     }
     
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    //NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     // Edit the entity name as appropriate.
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Item" inManagedObjectContext:self.managedObjectContext];
-    [fetchRequest setEntity:entity];
+    //NSEntityDescription *entity = [NSEntityDescription entityForName:@"Item" inManagedObjectContext:self.managedObjectContext];
+    
+    //[fetchRequest setEntity:entity];
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Item"];
+    
     
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
@@ -250,8 +261,32 @@
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-    NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = [[object valueForKey:@"id"] description];
+    Item *item = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.textLabel.text = item.name;
+}
+
+#pragma EditItemTableViewControlerDelegate
+- (void) addItem:(ItemDto*) itemDto
+{
+    NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
+    
+    NSString *uuidString = [[NSUUID UUID] UUIDString];
+    
+    Item *item = [NSEntityDescription insertNewObjectForEntityForName:@"Item" inManagedObjectContext:context];
+    item.timeStamp = [NSDate date];
+    item.uuid = uuidString;
+    item.name = itemDto.name;
+    item.desc = itemDto.desc;
+    
+    
+    // Save the context.
+    NSError *error = nil;
+    if (![context save:&error]) {
+        // Replace this implementation with code to handle the error appropriately.
+        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        
+    }
 }
 
 @end

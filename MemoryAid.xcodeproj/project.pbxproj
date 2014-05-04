@@ -27,6 +27,9 @@
 		1E27B6DE191584BE000E01DE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1E27B6DC191584BE000E01DE /* InfoPlist.strings */; };
 		1E27B6E0191584BE000E01DE /* MemoryAidTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E27B6DF191584BE000E01DE /* MemoryAidTests.m */; };
 		1E27B6EB19158F15000E01DE /* EditItemTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E27B6EA19158F15000E01DE /* EditItemTableViewController.m */; };
+		1E27B6F11915A8F2000E01DE /* Item+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E27B6F01915A8F2000E01DE /* Item+Category.m */; };
+		1E27B6F41915B3D8000E01DE /* ItemDto.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E27B6F31915B3D8000E01DE /* ItemDto.m */; };
+		1E27B6F71915B49B000E01DE /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E27B6F61915B49B000E01DE /* Item.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +69,12 @@
 		1E27B6DF191584BE000E01DE /* MemoryAidTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MemoryAidTests.m; sourceTree = "<group>"; };
 		1E27B6E919158F15000E01DE /* EditItemTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditItemTableViewController.h; sourceTree = "<group>"; };
 		1E27B6EA19158F15000E01DE /* EditItemTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditItemTableViewController.m; sourceTree = "<group>"; };
+		1E27B6EF1915A8F2000E01DE /* Item+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Item+Category.h"; sourceTree = "<group>"; };
+		1E27B6F01915A8F2000E01DE /* Item+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Item+Category.m"; sourceTree = "<group>"; };
+		1E27B6F21915B3D8000E01DE /* ItemDto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemDto.h; sourceTree = "<group>"; };
+		1E27B6F31915B3D8000E01DE /* ItemDto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemDto.m; sourceTree = "<group>"; };
+		1E27B6F51915B49B000E01DE /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
+		1E27B6F61915B49B000E01DE /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,12 +143,18 @@
 				1E27B6BF191584BE000E01DE /* Main_iPad.storyboard */,
 				1E27B6C5191584BE000E01DE /* MasterViewController.h */,
 				1E27B6C6191584BE000E01DE /* MasterViewController.m */,
+				1E27B6EF1915A8F2000E01DE /* Item+Category.h */,
+				1E27B6F01915A8F2000E01DE /* Item+Category.m */,
 				1E27B6C8191584BE000E01DE /* DetailViewController.h */,
 				1E27B6C9191584BE000E01DE /* DetailViewController.m */,
 				1E27B6E919158F15000E01DE /* EditItemTableViewController.h */,
 				1E27B6EA19158F15000E01DE /* EditItemTableViewController.m */,
+				1E27B6F21915B3D8000E01DE /* ItemDto.h */,
+				1E27B6F31915B3D8000E01DE /* ItemDto.m */,
 				1E27B6CB191584BE000E01DE /* Images.xcassets */,
 				1E27B6C2191584BE000E01DE /* MemoryAid.xcdatamodeld */,
+				1E27B6F51915B49B000E01DE /* Item.h */,
+				1E27B6F61915B49B000E01DE /* Item.m */,
 				1E27B6B1191584BD000E01DE /* Supporting Files */,
 			);
 			path = MemoryAid;
@@ -272,11 +287,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E27B6F71915B49B000E01DE /* Item.m in Sources */,
 				1E27B6CA191584BE000E01DE /* DetailViewController.m in Sources */,
 				1E27B6C7191584BE000E01DE /* MasterViewController.m in Sources */,
+				1E27B6F11915A8F2000E01DE /* Item+Category.m in Sources */,
 				1E27B6EB19158F15000E01DE /* EditItemTableViewController.m in Sources */,
 				1E27B6BB191584BD000E01DE /* AppDelegate.m in Sources */,
 				1E27B6C4191584BE000E01DE /* MemoryAid.xcdatamodeld in Sources */,
+				1E27B6F41915B3D8000E01DE /* ItemDto.m in Sources */,
 				1E27B6B7191584BD000E01DE /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

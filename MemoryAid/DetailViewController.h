@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+@class ItemDto;
 
 @interface DetailViewController : UIViewController <UISplitViewControllerDelegate>
 
-@property (strong, nonatomic) id detailItem;
+@property (strong, nonatomic) ItemDto *detailItem;
 
 @property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
 @end
